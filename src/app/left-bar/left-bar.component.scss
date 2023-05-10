@@ -1,6 +1,6 @@
-.nav-items {
+.na-items {
   padding-top: 40px;
-  .nav-item {
+  .na-item {
     padding: 25px 50px;
     cursor: pointer;
     @media only screen and (max-width: 1300px) {
@@ -13,6 +13,11 @@
       margin-right: 20px;
       font-size: 22px;
     }
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
     span {
       display: inline;
       @media only screen and (max-width: 1300px) {

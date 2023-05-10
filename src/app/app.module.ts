@@ -13,7 +13,10 @@ import { ProbabilityChartWidgetComponent } from './probability-chart-widget/prob
 import { FutureAssuranceWidgetComponent } from './future-assurance-widget/future-assurance-widget.component';
 import { OtherAssuranceComponent } from './other-assurance/other-assurance.component';
 import {ChartModule} from 'angular-highcharts';
-import { ClientComponent } from './client/client.component'
+import { ClientComponent } from './client/client.component';
+import { ContratComponent } from './contrat/contrat.component'
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,11 +29,14 @@ import { ClientComponent } from './client/client.component'
     ProbabilityChartWidgetComponent,
     FutureAssuranceWidgetComponent,
     OtherAssuranceComponent,
-    ClientComponent
+    ClientComponent,
+    ContratComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     FontAwesomeModule,
     ChartModule
   ],
