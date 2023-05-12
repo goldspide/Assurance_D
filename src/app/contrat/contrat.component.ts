@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { contrat } from '../model/contrat';
+import { contrat } from 'src/app/model/contrat';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ContratService } from '../services/contrat.service';
+import { ContratService } from 'src/app/services/contrat.service';
 
 declare var window:any;
 
@@ -13,22 +13,23 @@ declare var window:any;
 export class ContratComponent {
   contratData!:any;
   formValue!:FormGroup;
-  formModal!:any;
+  formModal:any;
   showAdd!:boolean;
   showUpdate!:boolean;
 
-  contratModel: contrat = new contrat()
+  contratModel = new contrat()
   constructor(private formbuilder: FormBuilder , private api: ContratService){}
 
-  ngOnInit(){
+  ngOnInit(): void{
     this.formModal = new window.bootstrap.Modal(
       document.getElementById('exampleModal')
     );
     this.formValue = this.formbuilder.group({
-      nom: [''],
-      ville:[''],
-      numero_de_telephone:['']
+      titre: [''],
+      auteur:[''],
+      // numero_de_telephone:['']
     })
+    this.getContrat()
   }
   openModal(){
     this.formModal.show();
@@ -45,14 +46,14 @@ export class ContratComponent {
   }
 
   getContrat(){
-    this.api.getContrat().subscribe(res=>{
+    this.api.getContrat().subscribe((res)=>{
       this.contratData = res;
-      console.log(res);
-
-    })
+      console.log(res)
+    });
   }
 
   modifierContrat(contrat: any){
+    this.showUpdate = true;
 
   }
   deleteContrat(contrat: any){

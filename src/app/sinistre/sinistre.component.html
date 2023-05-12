@@ -1,0 +1,76 @@
+<nav class="navbar nabar-light bg-primary">
+  <div class="container-fluid">
+    <h1 style="color: aliceblue;">Sinistre</h1>
+    <div class="d-flex">
+      <button (click)="clickAddSinistre()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="openModal()" class="btn btn-success">Add Sinistre</button>
+    </div>
+  </div>
+</nav>
+
+<table class="table mt-3">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col"> Description</th>
+      <th scope="col">Montant</th>
+      <th scope="col">Lieu</th>
+      <th scope="col">Ref</th>
+
+      <th scope="col"> Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let Sinistre of SinistreData">
+      <td>{{Sinistre.Date}}</td>
+      <td>{{Sinistre.Description}}</td>
+      <td>{{Sinistre.Montant}}</td>
+      <td>{{Sinistre.Lieu}}</td>
+      <td>{{Sinistre.Ref}}</td>
+      <td>
+        <button (click)="modifierSinistre(Sinistre)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="openModal()" class="btn btn-info">Edit</button>
+        <button (click)="deleteSinistre(Sinistre)" class="btn btn-danger mx-3 ">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajoute une Sinistre</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup] = "formValue">
+          <div class="form-group mb-3">
+            <label for="exampleInputEmail1">Date</label>
+            <input type="date" formControlName="date" class="form-control"  placeholder="Entre la Date">
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="exampleInputEmail1">Description</label>
+            <input type="text" formControlName="description" class="form-control"  placeholder="Entre la description ">
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="exampleInputEmail1">Montant</label>
+            <input type="text" formControlName="montant" class="form-control"  placeholder="A combien seleve les perte">
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="exampleInputEmail1">Lieu</label>
+            <input type="text" formControlName="montant" class="form-control"  placeholder="Entre le Lieu">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer mb-3">
+        <button type="button" id="cancel" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</button>
+        <button  *ngIf="showAdd" class="btn btn-primary" (click)="postSinistre()">Add</button>
+        <button *ngIf="showUpdate" type="button" class="btn btn-primary" (click)="updateSinistre()">Update</button>
+      </div>
+    </div>
+  </div>
+</div>

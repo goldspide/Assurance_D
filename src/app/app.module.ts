@@ -17,6 +17,9 @@ import { ClientComponent } from './client/client.component';
 import { ContratComponent } from './contrat/contrat.component'
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AgentComponent } from './agent/agent.component';
+import { SinistreComponent } from './sinistre/sinistre.component';
+import { AideComponent } from './aide/aide.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { HttpClientModule } from '@angular/common/http';
     FutureAssuranceWidgetComponent,
     OtherAssuranceComponent,
     ClientComponent,
-    ContratComponent
+    ContratComponent,
+    AgentComponent,
+    SinistreComponent,
+    AideComponent
   ],
   imports: [
     BrowserModule,
